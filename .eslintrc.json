@@ -10,7 +10,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "import", "unused-imports"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
@@ -24,6 +24,19 @@
       {
         "component": true,
         "html": true
+      }
+    ],
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-unused-vars": "off", //unused-importsを使うため削除
+    "unused-imports/no-unused-imports": "error", //不要なimportの削除
+    "unused-imports/no-unused-vars": [
+      //unused-importsでno-unused-varsのルールを再定義
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
       }
     ]
   }
